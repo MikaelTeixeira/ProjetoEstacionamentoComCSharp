@@ -11,40 +11,38 @@ namespace ProjetoEstacionamento.Models
 
         public string? Color { get; set; } = string.Empty;
 
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
-        public bool CarInPark { get; set; }
+        public double? TimeSpent { get; set; }
 
-
-        public decimal ParkingFee { get; set; }
-
-        public double TimeSpent { get; set; }
+        public string? Position { get; set; } = string.Empty;
 
 
-        public bool VerifyCar()
+
+        public static Car RegisterCar(string name, string color, int year, double timespent, string position) //FUNCIONANDO CORRETAMENTE
         {
-            return CarInPark;
+            Car newCar = new Car()
+            {
+                Name = name,
+                Color = color,
+                Year = year,
+                TimeSpent = timespent,
+                Position = position
+            };
+            return newCar;
         }
 
-        // public decimal CalculateFee()
-        // {
-        //     if (TimeSpent <= 1)
-        //     {
-        //         return 5.50M;
-        //     }
-        //     else if (TimeSpent > 1 && TimeSpent < 1.5)
-        //     {
-        //         return 6.75M;
-        //     }
-        //     else if (TimeSpent >= 1.5 && TimeSpent < 3)
-        //     {
-        //         return 7.25M;
-        //     }
-        //     else
-        //     {
-        //         return 10.00M;
-        //     }
-        // }
+        public static Car UpdateTimeSpent(double timespent, Car userCar) //FUNCIONANDO CORRETAMENTE
+        {
+            userCar.TimeSpent = timespent;
+            return userCar;
+        }
 
+        public static Car UpdatePosition(string position, Car userCar) // FUNCIONANDO CORRETAMENTE
+        {
+            userCar.Position = position;
+            return userCar;
+        }
     }
+
 }

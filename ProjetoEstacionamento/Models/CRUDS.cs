@@ -16,10 +16,8 @@ namespace ProjetoEstacionamento.Models
                 Console.WriteLine("\n1 - See cars in parking\n"); //Already has a feature
                 Console.WriteLine("2 - Register a new car\n"); //Already has a feature
                 Console.WriteLine("3 - See free spots on parking\n"); //Already has a feature
-                Console.WriteLine("4 - See how much time a car has been parked\n"); //Do this feature
-                Console.WriteLine("5 - Remove a car from the parking\n"); //Already has a function
-                Console.WriteLine("6 - Pay for a parking fee used.\n"); //Already has a function
-                Console.WriteLine("7 - Exit the program\n");
+                Console.WriteLine("4 - Remove a car from the parking\n"); //Already has a function
+                Console.WriteLine("5 - Exit the program\n");
                 Console.Write("Option: ");
 
 
@@ -28,13 +26,13 @@ namespace ProjetoEstacionamento.Models
                 // Se não conseguir retorna como 0. Dessa forma mesmo que seja digitado algo que não é um número, ele vai interpretar como um número
                 // menor do que o mínimo aceitável, que é 1, o que faz com que o loop se repita.
 
-                if (conclusion == 7)
+                if (conclusion == 5)
                 {
                     Console.WriteLine("\nSee you later!");
                     Environment.Exit(0);
                 }
 
-                if (conclusion < 1 || conclusion > 7)
+                if (conclusion < 1 || conclusion > 5)
                 {
                     Console.Clear();
                     Console.WriteLine("Invalid option, please, choose a valid one.");

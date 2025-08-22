@@ -48,7 +48,7 @@ do
 
             if (validDecision == true && userCar != null)
             {
-                bool spotVerification = parking.SearchCarInParking(userCar);
+                bool spotVerification = parking.SearchCarInParking(userCar.Name, userCar.Year ?? 0);
 
                 if (spotVerification == true)
                 {
@@ -70,9 +70,7 @@ do
 
             Console.WriteLine($"Alright!, your car now occupies the spot {selectedSpot}.");
             break;
-
-        case 4: //See how much time a car has been parked
-
+        case 5:
             bool feeCalcVerification = false;
             do
             {
@@ -95,6 +93,7 @@ do
                     if (car.Name.ToLower() == carName.ToLower() && car.Year == carYear)
                     {
                         feeCalcVerification = true;
+                        userCar = parking.GetCarInPark(carName, carYear);
                         break;
                     }
                 }
@@ -111,39 +110,20 @@ do
             decimal feePrice = parking.CalculateFee(userCar);
             Console.Clear();
             Console.WriteLine($"\nThe fee for the car {userCar.Name} is: {feePrice:C}");
+            Console.WriteLine("\nDo you want to pay for it?\n(Y/N):");
+            string payConfirmation = Console.ReadLine();
+
+            if (payConfirmation.ToLower() == "y")
+            {
+                Console.Clear();
+                Console.WriteLine($"\nPayment of {feePrice:C} received. Thank you!");
+
+                parking.RemoveCar(userCar.Position);
+            }
+
+
             break;
 
-        case 5: //Remove a car from the parking
-            bool carRemoved = false;
-            do
-            {
-
-                Console.WriteLine("\nType the car name:");
-                string carNameToRemove = Console.ReadLine();
-
-                Console.WriteLine("\nType the car's year number: ");
-                string strCarYear = Console.ReadLine();
-                int parkedCarYear;
-
-                if (int.TryParse(strCarYear, out parkedCarYear) == false)
-                {
-                    Console.Clear();
-                    Console.WriteLine("\nInvalid year, please, try again.\n");
-                    continue;
-                }
-
-                bool resultOfSearch = parking.SearchCarInParking(carNameToRemove, parkedCarYear);
-
-                if (resultOfSearch)
-                {
-                    Console.Clear();
-                    parking.RemoveCar(parkedCarYear);
-                    Console.WriteLine($"\nThe car {carNameToRemove} {parkedCarYear} was removed from the parking.");
-                }
-
-            } while (carRemoved == false);
-
-            // case 6:
 
     }
 } while (true);

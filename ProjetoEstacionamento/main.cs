@@ -70,7 +70,7 @@ do
 
             Console.WriteLine($"Alright!, your car now occupies the spot {selectedSpot}.");
             break;
-        case 5:
+        case 4:
             bool feeCalcVerification = false;
             do
             {
@@ -120,7 +120,6 @@ do
 
                 parking.RemoveCar(userCar.Position);
             }
-
 
             break;
 

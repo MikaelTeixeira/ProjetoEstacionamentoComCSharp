@@ -9,16 +9,17 @@ namespace ProjetoEstacionamento.Models
     {
         public List<string> FreeSpotsA { get; set; } = new List<string> { "A1", "A2", "A3", "A4", "A5" };
 
-        public List<string> FreeSpotsB { get;  set; } = new List<string> { "B1", "B2", "B3", "B4", "B5" };
+        public List<string> FreeSpotsB { get; set; } = new List<string> { "B1", "B2", "B3", "B4", "B5" };
 
-        public List<string> FreeSpotsC { get;  set; } = new List<string> { "C1", "C2", "C3", "C4", "C5" };
+        public List<string> FreeSpotsC { get; set; } = new List<string> { "C1", "C2", "C3", "C4", "C5" };
 
         public List<string> OccupiedSpots { get; set; } = new List<string>();
 
         public List<Car> CarsInPark { get; set; } = new List<Car>();
 
-        public decimal CalculateFee(double TimeSpent) //FUNCIONANDO CORRETAMENTE
+        public decimal CalculateFee(Car userCar) //FUNCIONANDO CORRETAMENTE
         {
+            double TimeSpent = userCar.TimeSpent ?? 0;
             if (TimeSpent <= 1)
             {
                 return 5.50M;
@@ -65,16 +66,25 @@ namespace ProjetoEstacionamento.Models
                 return;
             }
 
+            Console.WriteLine("\n");
+
+            foreach (var spot in FreeSpotsA)
+            {
+                Console.Write($" {spot}");
+            }
+
+            Console.WriteLine("\n");
+
             foreach (var spot in FreeSpotsB)
             {
-                Console.Write(spot);
+                Console.Write($" {spot}");
             }
 
             Console.WriteLine("\n");
 
             foreach (var spot in FreeSpotsC)
             {
-                Console.Write(spot);
+                Console.Write($" {spot}");
             }
 
             Console.WriteLine("\n");
@@ -90,32 +100,56 @@ namespace ProjetoEstacionamento.Models
 
             do
             {
+
+                this.GetFreeSpots();
                 Console.WriteLine("Choose the spot you want to rest your car:");
                 decision = Console.ReadLine();
 
-                if (!FreeSpotsA.Contains(decision) && !FreeSpotsB.Contains(decision) && !FreeSpotsC.Contains(decision))
+                if (!this.FreeSpotsA.Contains(decision.ToUpper()) && !this.FreeSpotsB.Contains(decision.ToUpper()) && !this.FreeSpotsC.Contains(decision.ToUpper()))
                 {
+                    Console.Clear();
                     Console.WriteLine("This spot is not available, please, choose a valid spot");
+
                     mistake = true;
                 }
                 else
                 {
+                    Console.Clear();
                     Console.WriteLine("\nCongratulations!");
                     mistake = false;
                 }
 
+
             } while (mistake == true);
-            return decision;
+            return decision.ToUpper();
         }
 
         public void RemoveCar(string Spot) //FUNCIONANDO CORRETAMENTE
         {
-            FreeSpots.Add(Spot);
+
+            if (Spot.StartsWith("A"))
+            {
+                FreeSpotsA.Add(Spot);
+            }
+            else if (Spot.StartsWith("B"))
+            {
+                FreeSpotsB.Add(Spot);
+            }
+            else if (Spot.StartsWith("C"))
+            {
+                FreeSpotsC.Add(Spot);
+            }
+            else
+            {
+                Console.WriteLine("Invalid spot. Please, choose a valid one.");
+                return;
+            }
+
             OccupiedSpots.Remove(Spot);
 
-            foreach(var userCar in CarsInPark)
+            foreach (var userCar in CarsInPark)
             {
-                if(userCar.Position == Spot)
+                if (userCar.Position == Spot)
                 {
                     CarsInPark.Remove(userCar);
                     break;
@@ -133,15 +167,15 @@ namespace ProjetoEstacionamento.Models
             {
                 CarsInPark.Add(userCar);
 
-                if (userCar.Position.Starts.With("A"))
+                if (userCar.Position.StartsWith("A"))
                 {
                     FreeSpotsA.Remove(userCar.Position);
                 }
-                else if (userCar.Position.Starts.With("B"))
+                else if (userCar.Position.StartsWith("B"))
                 {
                     FreeSpotsB.Remove(userCar.Position);
                 }
-                else if (userCar.Position.Starts.With("C"))
+                else if (userCar.Position.StartsWith("C"))
                 {
                     FreeSpotsC.Remove(userCar.Position);
                 }
@@ -150,5 +184,15 @@ namespace ProjetoEstacionamento.Models
             }
             return true;
         }
+
+        public bool SearchCarInParking(Car userCar) //FUNCIONANDO CORRETAMENTE
+        {
+            if (this.CarsInPark.Any(Car => Car.Name == userCar.Name && Car.Year == userCar.Year))
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

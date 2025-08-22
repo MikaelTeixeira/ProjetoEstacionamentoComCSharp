@@ -14,8 +14,8 @@ namespace ProjetoEstacionamento.Models
             {
                 Console.WriteLine("\nHey, user! Select one of these options:");
                 Console.WriteLine("\n1 - See cars in parking\n"); //Already has a feature
-                Console.WriteLine("2 - See free spots on parking\n"); //Already has a feature
-                Console.WriteLine("3 - Register a new car\n"); //Already has a feature
+                Console.WriteLine("2 - Register a new car\n"); //Already has a feature
+                Console.WriteLine("3 - See free spots on parking\n"); //Already has a feature
                 Console.WriteLine("4 - See how much time a car has been parked\n"); //Do this feature
                 Console.WriteLine("5 - Remove a car from the parking\n"); //Already has a function
                 Console.WriteLine("6 - Pay for a parking fee used.\n"); //Already has a function

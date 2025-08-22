@@ -185,9 +185,9 @@ namespace ProjetoEstacionamento.Models
             return true;
         }
 
-        public bool SearchCarInParking(Car userCar) //FUNCIONANDO CORRETAMENTE
+        public bool SearchCarInParking(string carName, int carYear) //FUNCIONANDO CORRETAMENTE
         {
-            if (this.CarsInPark.Any(Car => Car.Name == userCar.Name && Car.Year == userCar.Year))
+            if (this.CarsInPark.Any(Car => Car.Name == carName && Car.Year == carYear))
             {
                 return true;
             }

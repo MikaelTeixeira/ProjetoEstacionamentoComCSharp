@@ -120,6 +120,9 @@ do
 
                 Console.WriteLine("\nType the car name:");
                 string carNameToRemove = Console.ReadLine();
+
+                
+                
             } while (carRemoved == false);
 
             // case 6:

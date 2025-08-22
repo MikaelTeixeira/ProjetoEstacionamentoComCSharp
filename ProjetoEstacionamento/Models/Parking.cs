@@ -187,12 +187,23 @@ namespace ProjetoEstacionamento.Models
 
         public bool SearchCarInParking(string carName, int carYear) //FUNCIONANDO CORRETAMENTE
         {
-            if (this.CarsInPark.Any(Car => Car.Name == carName && Car.Year == carYear))
+            if (this.CarsInPark.Any(Car => Car.Name.ToLower() == carName.ToLower() && Car.Year == carYear))
             {
                 return true;
             }
             return false;
         }
 
+        public Car? GetCarInPark(string carName, int carYear) //FUNCIONANDO CORRETAMENTE
+        {
+            foreach (var car in CarsInPark)
+            {
+                if (car.Name.ToLower() == carName.ToLower() && car.Year == carYear)
+                {
+                    return car;
+                }
+            }
+            return null;
+        }
     }
 }

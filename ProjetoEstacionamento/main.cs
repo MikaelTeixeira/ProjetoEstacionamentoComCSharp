@@ -121,8 +121,26 @@ do
                 Console.WriteLine("\nType the car name:");
                 string carNameToRemove = Console.ReadLine();
 
-                
-                
+                Console.WriteLine("\nType the car's year number: ");
+                string strCarYear = Console.ReadLine();
+                int parkedCarYear;
+
+                if (int.TryParse(strCarYear, out parkedCarYear) == false)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nInvalid year, please, try again.\n");
+                    continue;
+                }
+
+                bool resultOfSearch = parking.SearchCarInParking(carNameToRemove, parkedCarYear);
+
+                if (resultOfSearch)
+                {
+                    Console.Clear();
+                    parking.RemoveCar(parkedCarYear);
+                    Console.WriteLine($"\nThe car {carNameToRemove} {parkedCarYear} was removed from the parking.");
+                }
+
             } while (carRemoved == false);
 
             // case 6:

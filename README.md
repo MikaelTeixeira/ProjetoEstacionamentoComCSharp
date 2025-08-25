@@ -1,6 +1,6 @@
 # Parking system project with C#
 
-English 🇺🇸
+ENGLISH
 
 Smart Parking System
 This project is a console application developed as part of the DIO C# bootcamp, designed to simulate a simple but functional parking management system. It serves as a practical demonstration of essential programming concepts, offering an intuitive way to manage vehicle flow.
@@ -15,7 +15,7 @@ Search & Analytics: Quickly search for a specific car by name and year to find i
 With a straightforward and practical interface, this project is a great example of how C# can be used to solve real-world problems.
 
 
-Português 🇧🇷
+PORTUGUÊS
 
 Estacionamento Inteligente
 Este projeto, desenvolvido como parte do bootcamp de C# pela DIO, é uma aplicação de console que simula a gestão de um estacionamento. Criado para demonstrar conceitos essenciais de programação, ele permite uma administração prática e intuitiva de veículos.

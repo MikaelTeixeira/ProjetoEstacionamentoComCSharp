@@ -3,6 +3,7 @@
 ENGLISH
 
 Smart Parking System
+
 This project is a console application developed as part of the DIO C# bootcamp, designed to simulate a simple but functional parking management system. It serves as a practical demonstration of essential programming concepts, offering an intuitive way to manage vehicle flow.
 
 Application Features:
@@ -17,7 +18,8 @@ With a straightforward and practical interface, this project is a great example 
 
 PORTUGUÊS
 
-Estacionamento Inteligente
+Estacionamento Inteligente.
+
 Este projeto, desenvolvido como parte do bootcamp de C# pela DIO, é uma aplicação de console que simula a gestão de um estacionamento. Criado para demonstrar conceitos essenciais de programação, ele permite uma administração prática e intuitiva de veículos.
 
 Recursos da Aplicação:
